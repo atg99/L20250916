@@ -7,9 +7,11 @@ int main()
 	int EXP = 0;
 	int GetEXP = 4;
 	int NeedEXP = 10;
-	while (EXP >= NeedEXP)
+	while (EXP <= NeedEXP)
 	{
 		EXP += GetEXP;
+		cout << "GetEXP + ";
+		cout << GetEXP << endl;
 	}
 	EXP = 0;
 	NeedEXP *= 2;
