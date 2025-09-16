@@ -11,6 +11,7 @@ int main()
 	{
 		EXP += GetEXP;
 	}
+	EXP = 0;
 	NeedEXP *= 2;
 	cout << "level up" << endl;
 	return 0;
