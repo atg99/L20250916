@@ -114,6 +114,28 @@ public:
 
 int main() 
 {
+	int mapWidth = 100;
+	int mapHeight = 100;
+
+	vector<string> mapData;
+	for (int y = 0; y < mapHeight; ++y)
+	{
+		string row = "";
+		for (int x = 0; x < mapWidth; ++x)
+		{
+			// 첫 줄, 마지막 줄, 첫 열, 마지막 열인 경우에만 '*' (테두리)
+			if (y == 0 || y == mapHeight - 1 || x == 0 || x == mapWidth - 1)
+			{
+				row += '*';
+			}
+			else // 그 외의 모든 내부 공간은 공백 ' '
+			{
+				row += '0';
+			}
+		}
+		row += '\n';
+		mapData.push_back(row);
+	}
 
 	Player Player(1, 'A', {0,0});
 
@@ -142,6 +164,15 @@ int main()
 	{
 		//Input();
 		//_getch();
+		COORD Cur;
+		Cur.X = 0;
+		Cur.Y = 0;
+
+		for (const string& row : mapData)
+		{
+			cout << row; // endl 대신 개행 문자가 없는 cout을 사용하면 스크롤 문제를 줄일 수 있습니다.
+		}
+
 		pair<int, int> Direction = Player.KeyProcess();
 		system("cls");
 		Player.CharacterPosition.first += Direction.first;
@@ -149,7 +180,7 @@ int main()
 
 		//엔진
 		//Render();
-		COORD Cur;
+		
 		Cur.X = Player.CharacterPosition.first;
 		Cur.Y = Player.CharacterPosition.second;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
